@@ -32,7 +32,7 @@ new #[Layout('layouts::guest')] class extends Component {
 };
 ?>
 
-<div class="w-full bg-[#1a1a24] rounded-2xl border border-white/5 p-8 shadow-2xl">
+<div class="w-full bg-[#1a1a24] rounded-2xl border border-white/5 p-6 sm:p-8 shadow-2xl">
 
     {{-- Header --}}
     <div class="mb-8">

@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body class="min-h-screen bg-[#0f0f14] flex items-center justify-center px-4 py-8 relative overflow-hidden">
+<body class="min-h-screen bg-[#0f0f14] flex items-center justify-center px-4 py-8 relative">
 
     {{-- Background decorative elements --}}
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
