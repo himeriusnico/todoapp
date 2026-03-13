@@ -164,7 +164,7 @@ new #[Layout('layouts::app')] class extends Component {
     <div class="flex gap-1.5 bg-white rounded-xl p-1 shadow-sm border border-gray-100 w-fit">
         @foreach(['all' => 'All', 'active' => 'Active', 'completed' => 'Done'] as $value => $label)
             <button wire:click="$set('filter', '{{ $value }}')" class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200
-                                                                                                                        {{ $filter === $value
+                                                                                                                            {{ $filter === $value
             ? 'bg-[#0f0f14] text-white shadow-sm'
             : 'text-gray-400 hover:text-gray-600' }}">
                 {{ $label }}
@@ -197,12 +197,12 @@ new #[Layout('layouts::app')] class extends Component {
         @else
             @foreach($this->todos as $todo)
                 <div wire:key="{{ $todo->id }}" class="flex items-center gap-3 bg-white border rounded-xl px-4 py-3.5 group shadow-sm hover:shadow-md transition-all duration-200
-                                                                                        {{ $todo->due_date && !$todo->is_completed && $todo->due_date->isPast()
+                                                                                                {{ $todo->due_date && !$todo->is_completed && $todo->due_date->isPast()
                     ? 'border-red-200 hover:border-red-300'
                     : 'border-gray-100 hover:border-gray-200' }}">
                     {{-- Toggle button --}}
                     <button wire:click="toggleTodo({{ $todo->id }})" class="w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-all duration-200
-                                                                                            {{ $todo->is_completed
+                                                                                                    {{ $todo->is_completed
                     ? 'bg-indigo-500 border-indigo-500'
                     : 'border-gray-300 hover:border-indigo-400' }}">
                         @if($todo->is_completed)
@@ -234,13 +234,13 @@ new #[Layout('layouts::app')] class extends Component {
                         @else
                             <span wire:dblclick="startEditing({{ $todo->id }})"
                                 class="block text-sm transition-all duration-200 cursor-pointer select-none truncate
-                                                                                                                                            {{ $todo->is_completed ? 'line-through text-gray-300' : 'text-gray-700' }}"
+                                                                                                                                                        {{ $todo->is_completed ? 'line-through text-gray-300' : 'text-gray-700' }}"
                                 title="Double click to edit">
                                 {{ $todo->title }}
                             </span>
                             @if($todo->due_date)
                                 <span class="text-xs mt-0.5 flex items-center gap-1
-                                                                                                                                                                                    {{ $todo->is_completed ? 'text-gray-300' :
+                                                                                                                                                                                                    {{ $todo->is_completed ? 'text-gray-300' :
                                     ($todo->due_date->isPast() ? 'text-red-400' :
                                         ($todo->due_date->isToday() ? 'text-amber-400' : 'text-gray-400')) }}">
                                     <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -265,6 +265,10 @@ new #[Layout('layouts::app')] class extends Component {
                     {{-- Delete --}}
                     <button wire:click="deleteTodo({{ $todo->id }})" wire:confirm="Delete this task?"
                         class="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 text-gray-200 hover:text-red-400 active:text-red-400 transition-all duration-200 ml-1 flex-shrink-0">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             @endforeach
         @endif
